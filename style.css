@@ -72,7 +72,6 @@ body {
     radial-gradient(45rem 35rem at 50% 95%, rgba(216, 227, 251, 0.75), transparent 65%);
   background-attachment: fixed;
   color: var(--color-text-main);
-  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -519,3 +518,153 @@ input:focus, select:focus, textarea:focus {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & TOUCH ACCESSIBILITY
+   ========================================================================== */
+
+/* overflow-x: clip avoids turning html/body into scroll containers (which broke wheel scrolling) */
+html, body {
+  overflow-x: clip;
+  overflow-y: auto;
+  max-width: 100vw;
+  width: 100%;
+  touch-action: auto;
+}
+main { overflow-x: clip !important; overflow-y: visible !important; }
+
+@media (max-width: 640px) {
+  /* Prevent horizontal scrolling across containers */
+  main, header, footer, section {
+    max-width: 100vw;
+  }
+
+  /* Touch-friendly interactive targets (44px min touch size) */
+  button,
+  .quick-chip,
+  .nav-tab-btn,
+  .game-nav-btn,
+  input[type="button"],
+  input[type="submit"],
+  .routine-row {
+    min-height: 44px;
+  }
+
+  /* Compact header navigation for mobile */
+  .nav-tab-btn {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+    font-size: 0.8125rem !important;
+  }
+
+  /* Word Recall tiles on small screens */
+  #wordTilesContainer > div {
+    min-width: 2.75rem;
+    height: 4.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Clean icon-only or ultra-compact mode for nav on very narrow phones */
+  .nav-tab-btn span:not(.material-symbols-outlined) {
+    display: none;
+  }
+  .nav-tab-btn {
+    padding: 0.5rem 0.65rem !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE FIXES & MEMORY NOTES (additive only)
+   ========================================================================== */
+
+/* Memory Notes card follows the same card surface as other cards */
+#memoryNotesSection {
+  background: #ffffff !important;
+  border: 1px solid var(--color-card-border) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+#notesList > div {
+  animation: bubble-slide-up 0.3s var(--ease-spring) both;
+}
+
+/* Long words / notes never push the layout sideways */
+img, canvas, video, svg { max-width: 100%; }
+#notesList span, #conversationLog div { overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  /* Force every card grid into a single column (Sudoku 4x4 and pair cards stay as game boards) */
+  .grid.lg\:grid-cols-12,
+  .grid.md\:grid-cols-12,
+  #photoVault {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .grid.lg\:grid-cols-12 > *,
+  .grid.md\:grid-cols-12 > * {
+    grid-column: auto !important;
+    min-width: 0;
+  }
+
+  /* Cards keep comfortable padding but never exceed the screen */
+  section > .rounded-xl,
+  section .grid > .rounded-xl {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Touch-friendly sizing: voice, games, notes, modal and delete buttons */
+  .game-nav-btn,
+  #sendTextBtn,
+  #saveNoteBtn,
+  #readNotesBtn,
+  #playAudioNote,
+  #voiceGuidanceToggle,
+  #saveSettings {
+    min-height: 48px;
+  }
+  #emergencyBtn { min-height: 56px; }
+  #micBtn { width: 6.5rem; height: 6.5rem; }
+  #gymMicBtn { width: 3.5rem; height: 3.5rem; }
+  #closeModal,
+  #medList button,
+  #photoVault button,
+  .note-delete-btn,
+  #game-word button[onclick],
+  #game-pairs button[onclick^="reset"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  #letterChoices button { min-height: 64px; }
+  #sudokuPicker button { min-height: 64px; }
+  .sudoku-cell { min-height: 56px; }
+  .quick-chip { min-height: 48px; }
+
+  /* Text inputs: 16px stops iOS from zooming in on focus */
+  input[type="text"], input[type="tel"], input[type="number"],
+  input[type="password"], input[type="time"], select {
+    font-size: 16px;
+    min-height: 48px;
+  }
+  input[type="file"] { max-width: 100%; }
+
+  /* Modals fit small screens */
+  .modal-overlay > div { max-width: 100%; max-height: 92vh; overflow-y: auto; }
+}
+
+/* Very narrow phones: keep header on one line without sideways scroll */
+@media (max-width: 380px) {
+  header [onclick="switchMainTab('patient')"] > .flex-col { display: none; }
+  .nav-tab-btn { padding: 0.5rem 0.55rem !important; }
+}
+
+/* ==========================================================================
+   CAREGIVER SUBSCRIPTION (additive)
+   ========================================================================== */
+#pricingSection { background:#fff !important; border:1px solid rgba(249,115,22,.3) !important; box-shadow: var(--shadow-md) !important; }
+.billing-toggle button[aria-pressed="true"] { background:#F97316; color:#fff; box-shadow: var(--shadow-sm); }
+.billing-toggle button[aria-pressed="false"] { background:transparent; color: var(--color-text-muted); }
+.btn-orange { background:#F97316; color:#fff; box-shadow: 0 8px 24px -6px rgba(249,115,22,.45); }
+.btn-orange:hover { background:#ea680c; }
+#checkoutModal input { border:1.5px solid rgba(207,218,242,.9); }
+@keyframes pop-check { from{transform:scale(.4);opacity:0} to{transform:scale(1);opacity:1} }
+#checkoutDone .check-badge { animation: pop-check .45s var(--ease-spring) both; }

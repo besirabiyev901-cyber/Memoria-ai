@@ -95,16 +95,16 @@
     <div class="h-20 w-full max-w-[1180px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
 
       <!-- Brand & Title -->
-      <div class="flex items-center gap-3.5 cursor-pointer group" onclick="switchMainTab('patient')">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-white shadow-md shadow-primary/25 transition-transform group-hover:scale-105">
-          <span class="material-symbols-outlined text-[26px]">psychology</span>
+      <div class="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group flex-shrink-0" onclick="switchMainTab('patient')">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-white shadow-md shadow-primary/25 transition-transform group-hover:scale-105 flex-shrink-0">
+          <span class="material-symbols-outlined text-[22px] sm:text-[26px]">psychology</span>
         </div>
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
-            <span class="font-headline text-xl sm:text-2xl font-extrabold text-on-surface leading-tight tracking-tight">Memoria AI</span>
+            <span class="font-headline text-lg sm:text-2xl font-extrabold text-on-surface leading-tight tracking-tight">Memoria AI</span>
             <span class="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">Compassion</span>
           </div>
-          <span class="font-label text-xs sm:text-sm text-on-surface-variant font-medium">Palliative &amp; Memory Care Assistant</span>
+          <span class="hidden md:inline font-label text-xs sm:text-sm text-on-surface-variant font-medium">Palliative &amp; Memory Care Assistant</span>
         </div>
       </div>
 
@@ -118,25 +118,25 @@
       </div>
 
       <!-- Mode Switcher Navigation & Settings -->
-      <div class="flex items-center gap-2 sm:gap-3">
+      <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
         <nav class="flex items-center p-1 rounded-2xl bg-surface-container-low border border-surface-container-high/80 shadow-inner">
-          <button class="nav-tab-btn flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-sm sm:text-base font-bold transition-all bg-primary-container text-on-primary-container shadow-sm" data-tab="patient" onclick="switchMainTab('patient')">
-            <span class="material-symbols-outlined text-[20px]">person</span>
+          <button class="nav-tab-btn flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-2 rounded-xl text-xs sm:text-base font-bold transition-all bg-primary-container text-on-primary-container shadow-sm min-h-[44px]" data-tab="patient" onclick="switchMainTab('patient')">
+            <span class="material-symbols-outlined text-[18px] sm:text-[20px]">person</span>
             <span>Patient</span>
           </button>
-          <button class="nav-tab-btn flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-sm sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all" data-tab="brain-gym" onclick="switchMainTab('brain-gym')">
-            <span class="material-symbols-outlined text-[20px]">sports_esports</span>
+          <button class="nav-tab-btn flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-2 rounded-xl text-xs sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all min-h-[44px]" data-tab="brain-gym" onclick="switchMainTab('brain-gym')">
+            <span class="material-symbols-outlined text-[18px] sm:text-[20px]">sports_esports</span>
             <span>Brain Gym</span>
           </button>
-          <button class="nav-tab-btn flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-sm sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all" data-tab="caregiver" onclick="switchMainTab('caregiver')">
-            <span class="material-symbols-outlined text-[20px]">shield_with_heart</span>
+          <button class="nav-tab-btn flex items-center gap-1.5 px-2.5 sm:px-4 py-2 rounded-xl text-xs sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all min-h-[44px]" data-tab="caregiver" onclick="switchMainTab('caregiver')">
+            <span class="material-symbols-outlined text-[18px] sm:text-[20px]">shield_with_heart</span>
             <span>Caregiver</span>
           </button>
         </nav>
 
         <!-- Settings Button -->
-        <button id="settingsBtn" class="w-11 h-11 rounded-2xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-surface-container-high/80 shadow-sm transition-all flex items-center justify-center" title="Settings &amp; Gemini AI Configuration">
-          <span class="material-symbols-outlined text-[24px]">settings</span>
+        <button id="settingsBtn" class="w-10 h-10 sm:w-11 sm:h-11 min-h-[44px] min-w-[44px] rounded-2xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-surface-container-high/80 shadow-sm transition-all flex items-center justify-center flex-shrink-0" title="Settings &amp; Gemini AI Configuration">
+          <span class="material-symbols-outlined text-[22px] sm:text-[24px]">settings</span>
         </button>
       </div>
 
@@ -144,7 +144,7 @@
   </header>
 
   <!-- MAIN VIEW CONTAINER -->
-  <main class="w-full flex-1 pt-28 pb-16 bg-surface relative overflow-x-hidden">
+  <main class="w-full flex-1 pt-28 pb-16 bg-surface relative overflow-x-clip">
     <!-- Ambient Warm Glow accents -->
     <div class="absolute -top-28 right-1/4 w-[420px] h-[420px] bg-primary-fixed/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
     <div class="absolute top-1/3 -left-20 w-[360px] h-[360px] bg-secondary-fixed/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -160,20 +160,29 @@
         <div class="w-full bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-sm border border-surface-container-high flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative overflow-hidden">
           <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary-container"></div>
           <div class="flex flex-col gap-2">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit shadow-sm">
-              <span class="material-symbols-outlined text-[20px] fill-1 text-secondary">verified</span>
-              <span class="font-label text-xs sm:text-sm font-bold">Safe &amp; Reassured Environment</span>
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit shadow-sm">
+                <span class="material-symbols-outlined text-[20px] fill-1 text-secondary">verified</span>
+                <span class="font-label text-xs sm:text-sm font-bold">Safe &amp; Reassured Environment</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant border border-surface-container-high w-fit shadow-sm">
+                <span class="material-symbols-outlined text-[18px] text-primary">devices</span>
+                <span class="font-label text-xs sm:text-sm font-bold">Cross-Platform Ready • Web, iOS &amp; Android</span>
+              </div>
             </div>
             <h1 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight" id="greetingText">
               Good day, Arthur!
             </h1>
+            <p class="font-headline text-base sm:text-lg lg:text-xl font-bold text-primary">
+              Empathetic AI Care for Alzheimer's Patients &amp; Daily Brain Training for Prevention
+            </p>
             <p class="font-body text-lg sm:text-xl text-on-surface-variant flex items-center gap-2" id="locationText">
               <span class="material-symbols-outlined text-primary text-[22px]">location_on</span>
               You are safe at home in Baku, Azerbaijan.
             </p>
           </div>
-          <div class="flex items-center gap-3.5 px-5 py-3.5 bg-surface-container-low rounded-xl border border-surface-container-high/80 shadow-sm">
-            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+          <div class="flex items-center gap-3.5 px-5 py-3.5 bg-surface-container-low rounded-xl border border-surface-container-high/80 shadow-sm w-full md:w-auto">
+            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
               <span class="material-symbols-outlined text-[24px] fill-1">spa</span>
             </div>
             <div class="flex flex-col">
@@ -257,9 +266,9 @@
             </div>
 
             <!-- Memory Subject Box -->
-            <div class="flex items-center gap-5 p-5 bg-surface-container-low rounded-xl border border-surface-container-high shadow-sm">
-              <div id="memoryAvatar" class="w-24 h-24 rounded-2xl bg-surface-container-high flex items-center justify-center overflow-hidden border-2 border-primary-fixed shadow-md flex-shrink-0">
-                <span class="material-symbols-outlined text-primary text-[48px]">person</span>
+            <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5 p-4 sm:p-5 bg-surface-container-low rounded-xl border border-surface-container-high shadow-sm">
+              <div id="memoryAvatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-surface-container-high flex items-center justify-center overflow-hidden border-2 border-primary-fixed shadow-md flex-shrink-0">
+                <span class="material-symbols-outlined text-primary text-[40px] sm:text-[48px]">person</span>
               </div>
               <div class="flex flex-col">
                 <span id="memoryName" class="font-headline text-2xl font-bold text-on-surface">Sarah</span>
@@ -269,7 +278,7 @@
             </div>
 
             <!-- Play Audio Note CTA -->
-            <button id="playAudioNote" class="w-full h-14 rounded-xl bg-secondary-container hover:bg-secondary hover:text-white text-on-secondary-container font-label text-lg font-bold transition-all shadow-sm flex items-center justify-center gap-2.5">
+            <button id="playAudioNote" class="w-full h-14 rounded-xl bg-secondary-container hover:bg-secondary hover:text-white text-on-secondary-container font-label text-lg font-bold transition-all shadow-sm flex items-center justify-center gap-2.5 min-h-[48px]">
               <span class="material-symbols-outlined text-[28px] fill-1">play_circle</span>
               <span id="audioNoteBtnText">Play Sarah's reassuring voice note</span>
             </button>
@@ -287,7 +296,7 @@
             </div>
 
             <!-- Telemetry Items -->
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col gap-1.5 shadow-sm">
                 <span class="material-symbols-outlined text-primary text-[28px]">home_pin</span>
                 <span class="font-label text-xs text-on-surface-variant font-bold uppercase tracking-wider">Safe Location</span>
@@ -301,7 +310,7 @@
             </div>
 
             <!-- Emergency Call Button -->
-            <button id="emergencyBtn" class="w-full h-16 rounded-xl bg-error hover:bg-error-container hover:text-on-error-container text-white font-label text-xl font-bold shadow-lg transition-all flex items-center justify-center gap-3">
+            <button id="emergencyBtn" class="w-full h-16 rounded-xl bg-error hover:bg-error-container hover:text-on-error-container text-white font-label text-xl font-bold shadow-lg transition-all flex items-center justify-center gap-3 min-h-[56px]">
               <span class="material-symbols-outlined text-[32px]">phone_in_talk</span>
               <span id="emergencyBtnText">Call caregiver (Sarah)</span>
             </button>
@@ -328,39 +337,76 @@
           <!-- Routine Checklist Items -->
           <div class="flex flex-col gap-3.5" id="routineList">
 
-            <label class="routine-row flex items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer">
-              <div class="flex items-center gap-4">
-                <input type="checkbox" class="w-8 h-8 rounded-lg accent-secondary cursor-pointer" />
+            <label class="routine-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer gap-3">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <input type="checkbox" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg accent-secondary cursor-pointer flex-shrink-0" />
                 <div class="flex flex-col">
-                  <span class="font-headline text-lg sm:text-xl font-bold text-on-surface routine-title">Take Heart &amp; Memory Medicine</span>
-                  <span class="font-body text-sm text-on-surface-variant">With a warm cup of water and a kind smile</span>
+                  <span class="font-headline text-base sm:text-xl font-bold text-on-surface routine-title">Take Heart &amp; Memory Medicine</span>
+                  <span class="font-body text-xs sm:text-sm text-on-surface-variant">With a warm cup of water and a kind smile</span>
                 </div>
               </div>
-              <span class="font-label text-sm sm:text-base font-bold text-primary px-3.5 py-1.5 rounded-full bg-primary-fixed/60 border border-primary/20">12:00 PM</span>
+              <span class="font-label text-xs sm:text-base font-bold text-primary px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-primary-fixed/60 border border-primary/20 self-end sm:self-auto flex-shrink-0">12:00 PM</span>
             </label>
 
-            <label class="routine-row flex items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer">
-              <div class="flex items-center gap-4">
-                <input type="checkbox" class="w-8 h-8 rounded-lg accent-secondary cursor-pointer" />
+            <label class="routine-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer gap-3">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <input type="checkbox" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg accent-secondary cursor-pointer flex-shrink-0" />
                 <div class="flex flex-col">
-                  <span class="font-headline text-lg sm:text-xl font-bold text-on-surface routine-title">Afternoon Hydration &amp; Fresh Fruit</span>
-                  <span class="font-body text-sm text-on-surface-variant">A crisp slice of apple or cool refreshing water</span>
+                  <span class="font-headline text-base sm:text-xl font-bold text-on-surface routine-title">Afternoon Hydration &amp; Fresh Fruit</span>
+                  <span class="font-body text-xs sm:text-sm text-on-surface-variant">A crisp slice of apple or cool refreshing water</span>
                 </div>
               </div>
-              <span class="font-label text-sm sm:text-base font-bold text-secondary px-3.5 py-1.5 rounded-full bg-secondary-container border border-secondary/20">2:00 PM</span>
+              <span class="font-label text-xs sm:text-base font-bold text-secondary px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-secondary-container border border-secondary/20 self-end sm:self-auto flex-shrink-0">2:00 PM</span>
             </label>
 
-            <label class="routine-row flex items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer">
-              <div class="flex items-center gap-4">
-                <input type="checkbox" class="w-8 h-8 rounded-lg accent-secondary cursor-pointer" />
+            <label class="routine-row flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-surface-container-high transition-all cursor-pointer gap-3">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <input type="checkbox" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg accent-secondary cursor-pointer flex-shrink-0" />
                 <div class="flex flex-col">
-                  <span class="font-headline text-lg sm:text-xl font-bold text-on-surface routine-title">Gentle Garden Stroll &amp; Fresh Air</span>
-                  <span class="font-body text-sm text-on-surface-variant">Enjoying the gentle sun, birds, and pleasant breeze</span>
+                  <span class="font-headline text-base sm:text-xl font-bold text-on-surface routine-title">Gentle Garden Stroll &amp; Fresh Air</span>
+                  <span class="font-body text-xs sm:text-sm text-on-surface-variant">Enjoying the gentle sun, birds, and pleasant breeze</span>
                 </div>
               </div>
-              <span class="font-label text-sm sm:text-base font-bold text-primary px-3.5 py-1.5 rounded-full bg-primary-fixed/60 border border-primary/20">4:00 PM</span>
+              <span class="font-label text-xs sm:text-base font-bold text-primary px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-primary-fixed/60 border border-primary/20 self-end sm:self-auto flex-shrink-0">4:00 PM</span>
             </label>
 
+          </div>
+        </div>
+
+        <!-- Memory Notes Card (New Section: Quick Reminders & SpeechSynthesis) -->
+        <div class="w-full bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-sm border border-surface-container-high flex flex-col gap-6" id="memoryNotesSection">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-surface-container-high/80">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary shadow-sm flex-shrink-0">
+                <span class="material-symbols-outlined text-[28px]">sticky_note_2</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 text-primary font-label text-sm font-bold mb-0.5">
+                  <span class="material-symbols-outlined text-[20px]">edit_note</span>
+                  <span>Personal Reminders</span>
+                </div>
+                <h2 class="font-headline text-2xl font-bold text-on-surface">Memory Notes</h2>
+                <p class="font-body text-base text-on-surface-variant">Comforting reminders and quick daily notes to keep your thoughts centered.</p>
+              </div>
+            </div>
+            <button id="readNotesBtn" onclick="readMemoryNotes()" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-secondary-container hover:bg-secondary hover:text-white text-on-secondary-container font-label text-base font-bold transition-all shadow-sm flex items-center justify-center gap-2 min-h-[48px]" title="Read all notes aloud with audio">
+              <span class="material-symbols-outlined text-[24px]">volume_up</span>
+              <span>Read Notes</span>
+            </button>
+          </div>
+
+          <!-- Note Input & Save CTA -->
+          <div class="flex flex-col sm:flex-row items-center gap-3">
+            <input type="text" id="noteInput" placeholder="Write a quick reminder (e.g., Keys are on the counter)..." class="flex-1 w-full h-14 px-5 rounded-xl bg-surface-container-low border border-surface-container-high text-on-surface text-base sm:text-lg focus:bg-surface-container-lowest focus:border-primary focus:outline-none transition-all placeholder:text-on-surface-variant/70 shadow-inner" />
+            <button id="saveNoteBtn" onclick="saveMemoryNote()" class="w-full sm:w-auto h-14 px-7 rounded-xl bg-primary hover:bg-primary-hover text-white font-label text-base sm:text-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 min-h-[48px]">
+              <span class="material-symbols-outlined text-[22px]">add_circle</span>
+              <span>Save Note</span>
+            </button>
+          </div>
+
+          <!-- Saved Notes List -->
+          <div class="flex flex-col gap-3" id="notesList">
+            <!-- Rendered dynamically -->
           </div>
         </div>
 
@@ -406,17 +452,17 @@
         </div>
 
         <!-- Game Tabs / Switcher -->
-        <nav aria-label="Game navigation" class="flex flex-wrap gap-2.5 p-2 rounded-2xl bg-surface-container-low border border-surface-container-high/80 w-full sm:w-fit shadow-sm">
-          <button class="game-nav-btn flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-label text-base font-bold bg-primary-container text-on-primary-container shadow-md transition-all" id="tab-btn-sudoku" onclick="switchGame('sudoku')">
-            <span class="material-symbols-outlined text-[24px]">grid_4x4</span>
+        <nav aria-label="Game navigation" class="flex flex-col sm:flex-row flex-wrap gap-2.5 p-2 rounded-2xl bg-surface-container-low border border-surface-container-high/80 w-full sm:w-fit shadow-sm">
+          <button class="game-nav-btn w-full sm:w-auto flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-4 sm:px-5 py-3 rounded-xl font-label text-sm sm:text-base font-bold bg-primary-container text-on-primary-container shadow-md transition-all min-h-[48px]" id="tab-btn-sudoku" onclick="switchGame('sudoku')">
+            <span class="material-symbols-outlined text-[22px] sm:text-[24px]">grid_4x4</span>
             <span>1. Number Sudoku</span>
           </button>
-          <button class="game-nav-btn flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-label text-base font-bold text-on-surface-variant hover:text-on-surface transition-all" id="tab-btn-word" onclick="switchGame('word')">
-            <span class="material-symbols-outlined text-[24px]">spellcheck</span>
+          <button class="game-nav-btn w-full sm:w-auto flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-4 sm:px-5 py-3 rounded-xl font-label text-sm sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all min-h-[48px]" id="tab-btn-word" onclick="switchGame('word')">
+            <span class="material-symbols-outlined text-[22px] sm:text-[24px]">spellcheck</span>
             <span>2. Morning Word Recall</span>
           </button>
-          <button class="game-nav-btn flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-label text-base font-bold text-on-surface-variant hover:text-on-surface transition-all" id="tab-btn-pairs" onclick="switchGame('pairs')">
-            <span class="material-symbols-outlined text-[24px]">view_comfy</span>
+          <button class="game-nav-btn w-full sm:w-auto flex-1 sm:flex-none flex items-center justify-center gap-2.5 px-4 sm:px-5 py-3 rounded-xl font-label text-sm sm:text-base font-bold text-on-surface-variant hover:text-on-surface transition-all min-h-[48px]" id="tab-btn-pairs" onclick="switchGame('pairs')">
+            <span class="material-symbols-outlined text-[22px] sm:text-[24px]">view_comfy</span>
             <span>3. Memory Pair Match</span>
           </button>
         </nav>
@@ -432,12 +478,12 @@
               <h2 class="font-headline text-2xl font-bold text-on-surface">4×4 Gentle Sudoku</h2>
               <p class="font-body text-base text-on-surface-variant">Each row and 2×2 quadrant needs numbers 1, 2, 3, and 4. Tap an empty box, then tap a number.</p>
             </div>
-            <div class="flex items-center gap-2.5">
-              <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-high transition-all shadow-sm" id="sudokuHintBtn" onclick="provideSudokuHint()">
+            <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+              <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-high transition-all shadow-sm min-h-[44px]" id="sudokuHintBtn" onclick="provideSudokuHint()">
                 <span class="material-symbols-outlined text-tertiary text-[22px]">lightbulb</span>
                 <span class="font-label text-sm font-bold">Gentle hint</span>
               </button>
-              <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-high transition-all shadow-sm" onclick="newSudokuPuzzle()">
+              <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-high transition-all shadow-sm min-h-[44px]" onclick="newSudokuPuzzle()">
                 <span class="material-symbols-outlined text-[22px]">refresh</span>
                 <span class="font-label text-sm font-bold">New puzzle</span>
               </button>
@@ -447,8 +493,8 @@
           <!-- Sudoku Interactive Layout -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <!-- 4x4 Grid Container -->
-            <div class="lg:col-span-7 flex flex-col items-center">
-              <div class="grid grid-cols-4 gap-3 p-4 rounded-2xl bg-surface-container-high shadow-inner w-full max-w-[420px] aspect-square" id="sudokuGrid">
+            <div class="lg:col-span-7 flex flex-col items-center w-full">
+              <div class="grid grid-cols-4 gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-surface-container-high shadow-inner w-full max-w-[340px] sm:max-w-[420px] aspect-square" id="sudokuGrid">
                 <!-- Dynamically rendered cells -->
               </div>
               <p class="font-body text-base text-on-surface-variant mt-4 text-center font-medium" id="sudoku-guide-msg">
@@ -623,7 +669,7 @@
               <span class="material-symbols-outlined text-primary text-[28px]">monitor_heart</span>
               <h2 class="font-headline text-xl font-bold text-on-surface">Live Patient Health &amp; GPS</h2>
             </div>
-            <div class="grid grid-cols-2 gap-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col shadow-sm">
                 <span class="font-label text-xs text-on-surface-variant font-bold uppercase">Location</span>
                 <span id="caregiverLocation" class="font-headline text-base font-bold text-on-surface mt-1">Baku, Azerbaijan</span>
@@ -707,7 +753,7 @@
                   <option value="Weekly">Weekly</option>
                 </select>
               </div>
-              <button type="submit" class="h-12 rounded-xl bg-primary hover:bg-primary-hover text-white font-label text-base font-bold transition-all shadow-md flex items-center justify-center gap-2">
+              <button type="submit" class="h-12 min-h-[48px] rounded-xl bg-primary hover:bg-primary-hover text-white font-label text-base font-bold transition-all shadow-md flex items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-[20px]">add</span>
                 <span>Add Medication</span>
               </button>
@@ -733,18 +779,60 @@
                 <input type="text" id="photoRelation" placeholder="Relationship (e.g. Daughter)" required class="h-12 px-4 rounded-xl bg-surface-container-low border border-surface-container-high text-on-surface text-base focus:bg-surface-container-lowest focus:border-primary focus:outline-none" />
               </div>
               <input type="file" id="photoFile" accept="image/*" required class="text-sm text-on-surface-variant file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:bg-surface-container-high file:text-on-surface file:font-semibold hover:file:bg-surface-container cursor-pointer" />
-              <button type="submit" class="h-12 rounded-xl bg-secondary hover:bg-secondary-hover text-white font-label text-base font-bold transition-all shadow-md flex items-center justify-center gap-2">
+              <button type="submit" class="h-12 min-h-[48px] rounded-xl bg-secondary hover:bg-secondary-hover text-white font-label text-base font-bold transition-all shadow-md flex items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-[20px]">upload</span>
                 <span>Add Familiar Photo</span>
               </button>
             </form>
 
             <!-- Photo Gallery Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-56 overflow-y-auto" id="photoVault">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-56 overflow-y-auto" id="photoVault">
               <!-- Rendered dynamically -->
             </div>
           </div>
 
+        </div>
+
+        <!-- Caregiver Subscription -->
+        <div id="pricingSection" class="w-full rounded-xl p-6 sm:p-8 flex flex-col gap-6 border border-orange-500/30">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-high">
+            <div>
+              <div class="flex items-center gap-2 text-primary font-label text-base font-bold mb-1">
+                <span class="material-symbols-outlined text-[24px]">workspace_premium</span>
+                <span>Caregiver Subscription</span>
+              </div>
+              <h2 class="font-headline text-2xl font-bold text-on-surface">Memoria Care Plus</h2>
+              <p class="font-body text-base text-on-surface-variant">Peace of mind for the whole family. Cancel anytime.</p>
+            </div>
+            <div class="billing-toggle flex p-1 rounded-full bg-surface-container-low border border-surface-container-high w-fit" role="group" aria-label="Billing period">
+              <button id="billMonthly" aria-pressed="true" onclick="setBilling('monthly')" class="px-5 py-2 rounded-full font-label text-sm font-bold">Monthly</button>
+              <button id="billAnnual" aria-pressed="false" onclick="setBilling('annual')" class="px-5 py-2 rounded-full font-label text-sm font-bold flex items-center gap-2">Annual <span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[11px]">Save 25%</span></button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="flex flex-col gap-2">
+              <span id="planBadge" class="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500 text-white font-label text-xs font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-[16px]">redeem</span><span id="planBadgeText">7-Day Free Trial</span>
+              </span>
+              <div class="flex items-baseline gap-2">
+                <span id="planPrice" class="font-headline text-5xl font-extrabold text-on-surface">$12.99</span>
+                <span class="font-body text-lg text-on-surface-variant">/ month</span>
+              </div>
+              <span id="planNote" class="font-body text-sm text-on-surface-variant">Then billed monthly after your free trial.</span>
+            </div>
+            <ul class="flex flex-col gap-3">
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary fill-1 text-[22px]">check_circle</span><span class="font-body text-base text-on-surface">Real-Time Location &amp; Geofencing Alerts</span></li>
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary fill-1 text-[22px]">check_circle</span><span class="font-body text-base text-on-surface">Daily Medication Compliance &amp; Mood Analytics</span></li>
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary fill-1 text-[22px]">check_circle</span><span class="font-body text-base text-on-surface">Unlimited Memory Voice Notes &amp; Full Brain Gym Access</span></li>
+              <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary fill-1 text-[22px]">check_circle</span><span class="font-body text-base text-on-surface">Up to 3 Family Caregiver Accounts</span></li>
+            </ul>
+          </div>
+
+          <button id="startTrialBtn" onclick="openCheckout()" class="btn-orange w-full sm:w-auto sm:self-start h-14 px-8 rounded-xl font-label text-lg font-bold transition-all flex items-center justify-center gap-2.5 min-h-[48px]">
+            <span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+            <span id="startTrialText">Start 7-Day Free Trial</span>
+          </button>
         </div>
 
       </section>
@@ -890,6 +978,50 @@
         </button>
       </div>
 
+    </div>
+  </div>
+
+
+  <!-- CHECKOUT MODAL (mock) -->
+  <div id="checkoutModal" class="modal-overlay fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-surface-container-lowest rounded-2xl p-6 sm:p-8 shadow-2xl border border-orange-500/30 flex flex-col gap-5 relative max-h-[92vh] overflow-y-auto">
+      <button onclick="closeCheckout()" aria-label="Close" class="absolute top-3 right-3 w-11 h-11 rounded-xl hover:bg-surface-container text-on-surface-variant flex items-center justify-center">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+
+      <form id="checkoutForm" class="flex flex-col gap-4">
+        <div>
+          <h3 class="font-headline text-2xl font-bold text-on-surface">Secure Checkout</h3>
+          <p id="checkoutSummary" class="font-body text-sm text-on-surface-variant mt-1">Memoria Care Plus · Monthly</p>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="cardNumber" class="font-label text-sm font-bold text-on-surface">Card Number</label>
+          <input id="cardNumber" inputmode="numeric" autocomplete="off" maxlength="19" placeholder="4242 4242 4242 4242" required class="h-12 px-4 rounded-xl bg-surface-container-low text-on-surface text-base focus:outline-none" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1.5">
+            <label for="cardExpiry" class="font-label text-sm font-bold text-on-surface">Expiry</label>
+            <input id="cardExpiry" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="MM/YY" required class="h-12 px-4 rounded-xl bg-surface-container-low text-on-surface text-base focus:outline-none" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="cardCvc" class="font-label text-sm font-bold text-on-surface">CVC</label>
+            <input id="cardCvc" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="123" required class="h-12 px-4 rounded-xl bg-surface-container-low text-on-surface text-base focus:outline-none" />
+          </div>
+        </div>
+        <p class="font-body text-xs text-on-surface-variant flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">lock</span>Demo only. No real payment is processed and no card data is stored.</p>
+        <button type="submit" id="checkoutSubmit" class="btn-orange h-14 rounded-xl font-label text-lg font-bold transition-all flex items-center justify-center gap-2 min-h-[48px]">
+          <span id="checkoutSubmitText">Start Free Trial</span>
+        </button>
+      </form>
+
+      <div id="checkoutDone" class="hidden flex flex-col items-center text-center gap-3 py-4">
+        <div class="check-badge w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined text-[48px] fill-1">check_circle</span>
+        </div>
+        <h3 class="font-headline text-2xl font-extrabold text-on-surface">Upgrade Completed</h3>
+        <p id="checkoutDoneMsg" class="font-body text-base text-on-surface-variant">Your 7-day free trial has started.</p>
+        <button onclick="closeCheckout()" class="btn-orange w-full h-12 rounded-xl font-label text-base font-bold mt-2">Done</button>
+      </div>
     </div>
   </div>
 

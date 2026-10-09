@@ -20,7 +20,7 @@ window.addEventListener("error", (e) => notify("Script error: " + e.message));
 
 // Everything runs after the page is ready, wherever the <script> tag is placed
 function memoriaMain() {
-  Object.assign(window, { addMsg, applySettings, applySudokuInput, ask, closeCelebrationModal, drawMedications, drawPhotos, drawSudokuGrid, elevenConfigured, initApp, loadSavedSettings, loadWordPuzzle, newSudokuPuzzle, nextWordPuzzle, offlineAssistant, onCardClicked, pickWordLetter, provideSudokuHint, removeMedication, removePhoto, renderCaregiverChart, resetMemoryMatchGame, speak, stopSpeaking, handleCommand, aiReply, sfx, gameIntro, confettiBurst, browserSpeak, switchGame, switchMainTab, toggleVoiceGuidance, triggerCelebrationModal, unlockAudio }); // for onclick="..." in your HTML
+  Object.assign(window, { addMsg, applySettings, applySudokuInput, ask, closeCelebrationModal, drawMedications, drawPhotos, drawSudokuGrid, elevenConfigured, initApp, loadSavedSettings, loadWordPuzzle, newSudokuPuzzle, nextWordPuzzle, offlineAssistant, onCardClicked, pickWordLetter, provideSudokuHint, removeMedication, removePhoto, renderCaregiverChart, resetMemoryMatchGame, speak, stopSpeaking, handleCommand, aiReply, sfx, gameIntro, confettiBurst, browserSpeak, switchGame, switchMainTab, toggleVoiceGuidance, triggerCelebrationModal, unlockAudio, saveMemoryNote, readMemoryNotes, deleteMemoryNote, drawMemoryNotes, setBilling, openCheckout, closeCheckout }); // for onclick="..." in your HTML
 
 // Utility Helpers
 const missingEls = new Set();
@@ -1181,6 +1181,153 @@ $("#photoForm").onsubmit = (e) => {
 };
 
 // ----------------------------------------------------
+// Memory Notes (quick reminders, saved locally, read aloud with speechSynthesis)
+// ----------------------------------------------------
+let memoryNotes = store.get("memoria_notes", []);
+if (!Array.isArray(memoryNotes)) memoryNotes = [];
+
+function drawMemoryNotes() {
+  const list = $("#notesList");
+  if (!list) return;
+
+  if (memoryNotes.length === 0) {
+    list.innerHTML = `<div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high text-on-surface-variant text-base">No notes yet. Write a quick reminder above and tap Save Note.</div>`;
+    return;
+  }
+
+  list.innerHTML = memoryNotes
+    .map(
+      (n, i) => `
+    <div class="flex items-center justify-between gap-3 p-4 rounded-xl bg-surface-container-low border border-surface-container-high shadow-sm">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="material-symbols-outlined text-primary text-[24px] flex-shrink-0">push_pin</span>
+        <div class="flex flex-col min-w-0">
+          <span class="font-body text-base sm:text-lg text-on-surface break-words">${esc(n.text)}</span>
+          <span class="font-label text-xs text-on-surface-variant">${esc(n.when || "")}</span>
+        </div>
+      </div>
+      <button onclick="deleteMemoryNote(${i})" class="note-delete-btn w-11 h-11 min-w-[44px] min-h-[44px] rounded-full hover:bg-surface-container text-error transition-all flex items-center justify-center flex-shrink-0" title="Delete note" aria-label="Delete note">
+        <span class="material-symbols-outlined text-[22px]">delete</span>
+      </button>
+    </div>
+  `
+    )
+    .join("");
+}
+
+function saveMemoryNote() {
+  const input = $("#noteInput");
+  const text = input.value.trim();
+  if (!text) {
+    input.focus();
+    return;
+  }
+  const when = new Date().toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  memoryNotes.unshift({ text, when });
+  store.set("memoria_notes", memoryNotes);
+  input.value = "";
+  drawMemoryNotes();
+}
+
+function deleteMemoryNote(idx) {
+  memoryNotes.splice(idx, 1);
+  store.set("memoria_notes", memoryNotes);
+  drawMemoryNotes();
+}
+
+function readMemoryNotes() {
+  if (!("speechSynthesis" in window)) {
+    notify("Reading aloud is not supported in this browser.");
+    return;
+  }
+  // Tapping again while reading stops it
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    return;
+  }
+  player.pause();
+  const lang = S.lang || "en-US";
+  const intro = memoryNotes.length
+    ? `${S.patient}, here are your notes.`
+    : `${S.patient}, you have no saved notes yet.`;
+  const lines = [intro, ...memoryNotes.map((n, i) => `Note ${i + 1}. ${n.text}`)];
+  const voice = speechSynthesis.getVoices().find((x) => x.lang.startsWith(lang.slice(0, 2)));
+  lines.forEach((line) => {
+    const u = new SpeechSynthesisUtterance(line);
+    u.lang = lang;
+    u.rate = 0.9;
+    u.pitch = 1;
+    if (voice) u.voice = voice;
+    speechSynthesis.speak(u);
+  });
+}
+
+$("#noteInput").onkeydown = (e) => {
+  if (e.key === "Enter") saveMemoryNote();
+};
+
+
+// ----------------------------------------------------
+// Caregiver Subscription (mock checkout)
+// ----------------------------------------------------
+let billing = "monthly";
+function setBilling(mode) {
+  billing = mode;
+  const annual = mode === "annual";
+  $("#billMonthly").setAttribute("aria-pressed", String(!annual));
+  $("#billAnnual").setAttribute("aria-pressed", String(annual));
+  $("#planPrice").textContent = annual ? "$9.99" : "$12.99";
+  $("#planBadgeText").textContent = annual ? "Save 25% · Best Value" : "7-Day Free Trial";
+  $("#planNote").textContent = annual
+    ? "Billed annually at $119.88 (7-day free trial included)."
+    : "Then billed monthly after your free trial.";
+}
+function openCheckout() {
+  $("#checkoutSummary").textContent = billing === "annual"
+    ? "Memoria Care Plus · Annual · $119.88 / year after trial"
+    : "Memoria Care Plus · Monthly · $12.99 / month after trial";
+  $("#checkoutForm").classList.remove("hidden");
+  $("#checkoutDone").classList.add("hidden");
+  $("#checkoutForm").reset();
+  $("#checkoutModal").classList.remove("hidden");
+  setTimeout(() => $("#cardNumber").focus(), 50);
+}
+function closeCheckout() {
+  $("#checkoutModal").classList.add("hidden");
+}
+$("#checkoutModal").onclick = (e) => { if (e.target === $("#checkoutModal")) closeCheckout(); };
+$("#cardNumber").oninput = (e) => {
+  e.target.value = e.target.value.replace(/\D/g, "").slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
+};
+$("#cardExpiry").oninput = (e) => {
+  let v = e.target.value.replace(/\D/g, "").slice(0, 4);
+  if (v.length > 2) v = v.slice(0, 2) + "/" + v.slice(2);
+  e.target.value = v;
+};
+$("#cardCvc").oninput = (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4); };
+$("#checkoutForm").onsubmit = (e) => {
+  e.preventDefault();
+  const digits = $("#cardNumber").value.replace(/\D/g, "");
+  if (digits.length < 13 || !/^\d{2}\/\d{2}$/.test($("#cardExpiry").value) || $("#cardCvc").value.length < 3) {
+    notify("Please enter a card number, expiry (MM/YY) and CVC.");
+    return;
+  }
+  const btn = $("#checkoutSubmit");
+  btn.disabled = true;
+  $("#checkoutSubmitText").textContent = "Processing…";
+  setTimeout(() => {
+    btn.disabled = false;
+    $("#checkoutSubmitText").textContent = "Start Free Trial";
+    $("#checkoutForm").classList.add("hidden");
+    $("#checkoutDone").classList.remove("hidden");
+    $("#checkoutDoneMsg").textContent = billing === "annual"
+      ? "Welcome to Care Plus Annual. Your 7-day free trial has started."
+      : "Welcome to Care Plus. Your 7-day free trial has started.";
+    confettiBurst();
+  }, 1200);
+};
+
+// ----------------------------------------------------
 // App Initialization (runs once, whether or not the DOM is already ready)
 // ----------------------------------------------------
 function initApp() {
@@ -1191,6 +1338,7 @@ function initApp() {
   renderCaregiverChart();
   drawMedications();
   drawPhotos();
+  drawMemoryNotes();
 }
 
 initApp();
